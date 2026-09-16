@@ -38,7 +38,7 @@ export default function Home() {
   const submitNewsletter = (event: React.FormEvent) => { event.preventDefault(); setNewsletterSent(true); };
 
   return <div className="kimo-app">
-    <div className="topline"><span>FREE SHIPPING ON ORDERS OVER $100</span><span>DROP 02 / 2026</span><span>GOOD CLOTHES. FAIR PRICES.</span></div>
+    <div className="topline" style={{textDecoration: 'underline'}}><span style={{textDecoration: 'underline'}}>FREE SHIPPING ON ORDERS OVER 100SAR</span><span style={{textDecoration: 'underline'}}>DROP 02 / 2026</span><span style={{textDecoration: 'underline'}}>GOOD CLOTHES. FAIR PRICES.</span></div>
     <header className="kimo-header">
       <div className="kimo-nav page-width">
         <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? <X /> : <Menu />}</button>
