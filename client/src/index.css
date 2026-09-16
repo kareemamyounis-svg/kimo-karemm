@@ -24,3 +24,5 @@
 .section-actions{display:flex;align-items:center;gap:25px}
 .product-detail-link{display:flex;align-items:center;gap:7px;color:var(--gold);font:9px 'DM Mono',monospace;margin-top:11px;border-bottom:1px solid transparent;width:max-content}.product-detail-link:hover{border-color:var(--gold)}
 @media(max-width:800px){.detail-header{height:72px}.detail-main{grid-template-columns:1fr;gap:42px;padding-top:28px;padding-bottom:80px}.detail-gallery{min-height:430px}.detail-gallery>img{height:430px}.detail-copy h1{font-size:54px}.detail-copy{max-width:none}.detail-related{padding-bottom:70px}.related-grid{grid-template-columns:1fr 1fr;gap:22px 12px}.related-grid a:last-child{display:none}.related-grid img{height:210px}.size-main{padding-top:60px;padding-bottom:80px}.size-hero{padding-bottom:60px}.size-content{grid-template-columns:1fr;gap:55px}.size-table-wrap{overflow-x:auto}.size-table-wrap table{min-width:540px}.size-table-title h2{font-size:22px}.section-actions{align-items:flex-start;flex-direction:column;gap:14px}}
+
+.logo-k{font:700 24px/1 "DM Serif Display",serif;color:var(--black);transform:translateY(-1px)}
