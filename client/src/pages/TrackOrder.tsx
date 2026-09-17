@@ -1,0 +1,14 @@
+import { FormEvent, useState } from "react";
+import { ArrowLeft, ArrowRight, Check, Package, Search, Truck } from "lucide-react";
+import { Link } from "wouter";
+import { DEMO_ORDERS, type DemoOrder } from "@/lib/commerce";
+
+const steps = ["Order placed", "Packed", "In transit", "Out for delivery", "Delivered"];
+
+export default function TrackOrder() {
+  const [value, setValue] = useState("");
+  const [order, setOrder] = useState<DemoOrder | null>(null);
+  const [searched, setSearched] = useState(false);
+  const submit = (event: FormEvent) => { event.preventDefault(); setOrder(DEMO_ORDERS[value.trim().toUpperCase() as keyof typeof DEMO_ORDERS] ?? null); setSearched(true); };
+  return <div className="track-page"><header className="detail-header page-width"><Link href="/" className="detail-back"><ArrowLeft size={16} /> Kimo Studio</Link><span className="detail-size-link"><Truck size={15} /> Saudi delivery</span></header><main className="track-main page-width"><div className="track-hero"><p className="kicker">KIMO / ORDER CARE</p><h1>Where is<br /><i>your order?</i></h1><p>Enter your Kimo order number to see the latest delivery update in Saudi Arabia.</p><form className="track-form" onSubmit={submit}><div><Search size={17} /><input value={value} onChange={(event) => setValue(event.target.value)} placeholder="e.g. KIMO-2026" aria-label="Order number" /></div><button className="gold-button" type="submit">Track order <ArrowRight size={16} /></button></form><small>Try the demo numbers: KIMO-2026, KIMO-2408, or KIMO-1180.</small></div>{searched && !order && <div className="track-result track-error"><Package size={22} /><h2>We couldn't find that order.</h2><p>Check the number in your confirmation email, or contact us and we will look it up.</p></div>}{order && <div className="track-result"><div className="track-result-head"><div><p className="kicker">{order.status.toUpperCase()}</p><h2>{value.toUpperCase()}</h2></div><div className="track-city">{order.city}<small>{order.eta}</small></div></div><div className="track-progress">{steps.map((step, index) => <div className={index < order.step ? "track-step complete" : index === order.step ? "track-step current" : "track-step"} key={step}><span>{index < order.step ? <Check size={13} /> : index + 1}</span><small>{step}</small></div>)}</div><div className="track-meta"><div><span>ITEMS</span><strong>{order.items}</strong></div><div><span>LAST UPDATE</span><strong>{order.updated}</strong></div></div></div>}<div className="track-note"><strong>Live tracking connection</strong><p>This front-end page is ready to connect to Shopify, your courier API, or a backend webhook. Replace the demo lookup in <code>client/src/lib/commerce.ts</code> with live order data before launch.</p></div></main><footer className="detail-footer page-width"><span>© 2026 Kimo Studio.</span><Link href="/">Back to home <ArrowRight size={14} /></Link></footer></div>;
+}
